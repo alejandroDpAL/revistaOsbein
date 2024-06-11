@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resultados</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        function updateScore(value) {
+            document.getElementById('score').innerText = value;
+        }
+
+        function loadUserName() {
+            const name = localStorage.getItem('username');
+            document.getElementById('usernameDisplay').innerText = name ? name : 'Usuario';
+        }
+
+        window.onload = loadUserName;
+    </script>
+</head>
+<body>
+    <div class="flex flex-col items-center mt-6">
+        <h1 class="text-3xl mb-8">Hola <span id="usernameDisplay">Usuario</span></h1>
+        <label class="block mt-8 text-center">Tus resultados</label>
+        <p>En esta prueba has tenido una puntuación de <span id="score">0</span> de 100</p>
+        <input type="range" min="1" max="100" value="0" class="mt-4 my-4" oninput="updateScore(this.value)">
+        <p>Respuestas acertadas</p>
+        <table class="table-auto mt-4">
+            <thead>
+                <tr>
+                    <th class="px-4 py-2">Pregunta</th>
+                    <th class="px-4 py-2">Respuesta correcta</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="bg-gray-200  ">
+                    <td class="border px-4 py-2">1</td>
+                    <td class="border px-4 py-2 flex items-center">
+                        <p>Tu respuesta</p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <button class="mt-8 px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-gray-400 hover:text-black">
+            <a href="inicio.html">Repetir prueba</a>
+        </button>
+    </div>
+</body>
+</html>
